@@ -8,7 +8,7 @@ import { API_URL_LOGIN } from "../constants";
 class Login extends React.Component {
   state = {
     email: "",
-    password: "",
+    password: ""
   };
 
   onChange = (e) => {
