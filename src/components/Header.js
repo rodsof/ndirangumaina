@@ -10,7 +10,7 @@ class Header extends Component {
         </a>
         <nav className="header-nav">
           <ul className="main-menu">
-            <li><a href="#" className="active">Home</a></li>
+            <li><a href="/home" className="active">Home</a></li>
             <NewPropertyModal 
             create={true}
             user={this.props.user}
@@ -18,7 +18,7 @@ class Header extends Component {
           </ul>
           <div className="header-right">
             <div className="user-panel">
-              <a href="/profile" className="register">User</a>
+              <a href="/profile" className="register">{this.props.user.name}</a>
             </div>
           </div>
         </nav>

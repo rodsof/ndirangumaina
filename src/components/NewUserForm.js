@@ -3,26 +3,22 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 import axios from "axios";
 
-import { API_URL_PROFILES } from "../constants";
-import { API_URL_ADMIN } from "../constants";
+import { API_URL_PROFILES, API_URL_DATA } from "../constants";
+import clientAxios from '../config/axios';
 
 class NewUserForm extends React.Component {
   state = {
-    pk: 0,
     name: "",
     email: "",
-    document: "",
     organization:"",
     bio:"",
-    is_active:true,
-    is_staff:false,
-    phone: ""
+    password: ""
   };
 
   componentDidMount() {
-    if (this.props.student) {
-      const { pk, name, document, email, phone } = this.props.student;
-      this.setState({ pk, name, document, email, phone });
+    if (this.props.user) {
+      const { id, name, email, bio, organization } = this.props.user;
+      this.setState({ id, name,  email , bio, organization });
     }
   }
 
@@ -31,6 +27,7 @@ class NewUserForm extends React.Component {
   };
 
   createUser = e => {
+    console.log("entra");
     e.preventDefault();
     axios.post(API_URL_PROFILES, this.state).then(() => {
       this.props.toggle();
@@ -39,7 +36,15 @@ class NewUserForm extends React.Component {
 
   editUser = e => {
     e.preventDefault();
-    axios.put(API_URL_PROFILES + this.state.ID, this.state).then(() => {
+    axios.get(API_URL_DATA).then((res)=> {
+      console.log(res);
+    })
+    axios.put(API_URL_PROFILES+this.props.user.id+ '/' ,
+    {
+      headers: {
+        'Authorization': 'Token a300f14adcc916a7334b63128fc00f15df442879'
+      }
+    }).then(() => {
       this.props.resetState();
       this.props.toggle();
     });
@@ -51,16 +56,7 @@ class NewUserForm extends React.Component {
 
   render() {
     return (
-      <Form onSubmit={this.props.user ? this.editUser : this.createUser}>
-        <FormGroup>
-          <Label for="name">Name:</Label>
-          <Input
-            type="text"
-            name="name"
-            onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.name)}
-          />
-        </FormGroup>
+      <Form onSubmit={this.props.user ? this.editUser : this.createUser} enctype="multipart/form-data">
         <FormGroup>
           <Label for="email">Email:</Label>
           <Input
@@ -70,6 +66,16 @@ class NewUserForm extends React.Component {
             value={this.defaultIfEmpty(this.state.email)}
           />
         </FormGroup>
+        <FormGroup>
+          <Label for="name">Name:</Label>
+          <Input
+            type="text"
+            name="name"
+            onChange={this.onChange}
+            value={this.defaultIfEmpty(this.state.name)}
+          />
+        </FormGroup>
+
         <FormGroup>
           <Label for="organization">Organization:</Label>
           <Input
@@ -86,52 +92,34 @@ class NewUserForm extends React.Component {
             name="bio"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.bio)}
+            autoComplete={this.props.user.bio}
+
           />
         </FormGroup>
+        {!this.props.create ? 
         <FormGroup>
-        <Label>
-          Is Active &nbsp;&nbsp;&nbsp;&nbsp;
+          <Label for="password">Password:</Label>
           <Input
-            type="checkbox"
-            name="is_active"
+            type="password"
+            name="password"
             onChange={this.onChange}
-            defaultChecked= {this.state.is_active}
-          />
-          </Label>
-        </FormGroup>
-        <FormGroup>
-        <Label>
-        Is Staff &nbsp;&nbsp;&nbsp;&nbsp;
-          <Input
-            type="checkbox"
-            name="is_staff"
-            onChange={this.onChange}
-            defaultChecked= {this.state.is_staff}
-          />
-          </Label>
-        </FormGroup>
-        <FormGroup>
-          <Label for="bio">Document:</Label>
-          <Input
-            type="text"
-            name="document"
-            onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.document)}
+            value={this.defaultIfEmpty(this.state.password)}
+            autoComplete={this.props.user.password}
           />
         </FormGroup>
-        <FormGroup>
-          <Label for="phone">Phone:</Label>
-          <Input
-            type="text"
-            name="phone"
-            onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.phone)}
-          />
-        </FormGroup>
+        :
+        null
+      }
+        {this.props.create ? 
         <Button
-          type="button" 
+          type="submit" 
           color="danger"
-        >REGISTER</Button>
+        >REGISTER</Button> :
+        <Button
+          type="submit" 
+          color="danger"
+        >SAVE</Button>
+      }
       </Form>
     );
   }

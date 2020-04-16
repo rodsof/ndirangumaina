@@ -2,7 +2,9 @@
 import axios from 'axios';
 
 const clientAxios = axios.create({
-    baseURL : process.env.REACT_APP_BACKEND_URL
+    baseURL : process.env.API,
+    headers: { Authorization: `Token a300f14adcc916a7334b63128fc00f15df442879` },
+    'Content-Type': 'application/json'
 });
 
 

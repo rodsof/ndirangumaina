@@ -1,11 +1,12 @@
 import React, { Fragment } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import NewUserModal from "./NewUserModal";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from "axios";
-import { API_URL_LOGIN } from "../constants";
+import { API_URL_LOGIN, API_URL_PROFILES } from "../constants";
 
 class Login extends React.Component {
+
   state = {
     email: "",
     password: "",
@@ -21,22 +22,24 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
-    axios.post(API_URL_LOGIN, this.state).then(() => {
-      this.props.toggle();
-    });
+    axios.post(API_URL_LOGIN, this.state ).then(res =>  {
+        localStorage.setItem('token', res.data.token);
+        this.props.history.push("/home");
+      });
   };
+
 
   render() {
     return (
       <div class="limiter">
         <div className="container-login100">
           <div className="wrap-login100">
-            <Form onSubmit={this.login}>
+            <Form onSubmit={this.login} enctype="multipart/form-data">
               <FormGroup>
-                <Label for="email">Email:</Label>
+                <Label for="username">Email:</Label>
                 <Input
                   type="text"
-                  name="email"
+                  name="username"
                   onChange={this.onChange}
                   value={this.defaultIfEmpty(this.state.name)}
                 />
@@ -44,7 +47,7 @@ class Login extends React.Component {
               <FormGroup>
                 <Label for="password">Password:</Label>
                 <Input
-                  type="text"
+                  type="password"
                   name="password"
                   onChange={this.onChange}
                   value={this.defaultIfEmpty(this.state.name)}
@@ -55,7 +58,6 @@ class Login extends React.Component {
               create={true} 
               />
             </Form>
-            <Link to={'/home'} className="link">Skip Login </Link>
           </div>
         </div>
       </div>

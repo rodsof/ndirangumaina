@@ -42,7 +42,8 @@ class NewUserModal extends Component {
           <ModalBody>
             <NewUserForm
               toggle={this.toggle}
-              student={this.props.student}
+              user={this.props.user}
+              create={create}
             />
           </ModalBody>
         </Modal>
