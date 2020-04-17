@@ -5,7 +5,11 @@ import Search from './Search';
 
 
 class Home extends Component {
-
+  componentDidMount(){
+    if (!localStorage.getItem("token")){
+      this.props.history.push("/");
+    }
+  }
   render() {
     return (
       <Container>
@@ -14,7 +18,7 @@ class Home extends Component {
         />
         <Row>
           <Col>
-          <Search user={this.props.user} />
+          <Search user={this.props.user} resetState={this.props.resetState} results={this.props.results} />
           </Col>
         </Row>
       </Container>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NewPropertyModal from "./NewPropertyModal";
+import {Button} from 'reactstrap';
 
 class Header extends Component {
     render() {
@@ -14,7 +15,9 @@ class Header extends Component {
             <NewPropertyModal 
             create={true}
             user={this.props.user}
+            resetState={this.props.resetState}
           />
+         <li><a href="/virtual" >Virtual Tour</a></li>
           </ul>
           <div className="header-right">
             <div className="user-panel">

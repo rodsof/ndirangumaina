@@ -4,13 +4,14 @@ import Header from "./Header";
 import NewUserModal from "./NewUserModal";
 
 const UserProfile = ({ user, resetState }) => {
+
   return (
     <div>
       <Header user={user} />
       <Row>
-        <div class="user-section">
-          <div class="property-item">
-            <div class="user-image">
+        <div className="user-section">
+          <div className="user-warp">
+            <div className="user-image">
               <img src="/user.png" />
             </div>
             <h2>{user.name}</h2>

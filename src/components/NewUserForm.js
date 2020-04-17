@@ -17,8 +17,8 @@ class NewUserForm extends React.Component {
 
   componentDidMount() {
     if (this.props.user) {
-      const { id, name, email, bio, organization } = this.props.user;
-      this.setState({ id, name,  email , bio, organization });
+      const { id, name, email, bio, organization, password } = this.props.user;
+      this.setState({ id, name,  email , bio, organization, password});
     }
   }
 
@@ -27,26 +27,18 @@ class NewUserForm extends React.Component {
   };
 
   createUser = e => {
-    console.log("entra");
     e.preventDefault();
-    axios.post(API_URL_PROFILES, this.state).then(() => {
+    var form = new FormData(document.forms.namedItem("user"));
+    clientAxios.post(API_URL_PROFILES, form).then(() => {
       this.props.toggle();
     });
   };
 
   editUser = e => {
     e.preventDefault();
-    axios.get(API_URL_DATA).then((res)=> {
-      console.log(res);
-    })
-    axios.put(API_URL_PROFILES+this.props.user.id+ '/' ,
-    {
-      headers: {
-        'Authorization': 'Token a300f14adcc916a7334b63128fc00f15df442879'
-      }
-    }).then(() => {
-      this.props.resetState();
+    clientAxios.put('SpatialArdhi/profiles/'+this.props.user.id+'/',this.state ).then(() => {
       this.props.toggle();
+      this.props.resetState();
     });
   };
   
@@ -56,7 +48,15 @@ class NewUserForm extends React.Component {
 
   render() {
     return (
-      <Form onSubmit={this.props.user ? this.editUser : this.createUser} enctype="multipart/form-data">
+      <Form name="user" onSubmit={this.props.user ? this.editUser : this.createUser} encType="multipart/form-data">
+        <FormGroup>
+          <Label for="image">Profile photo:</Label>
+          <Input
+            type="file"
+            name="image"
+            onChange={this.onChange}
+          />
+        </FormGroup>
         <FormGroup>
           <Label for="email">Email:</Label>
           <Input
@@ -64,6 +64,7 @@ class NewUserForm extends React.Component {
             name="email"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.email)}
+            autoComplete={this.defaultIfEmpty(this.state.email)}
           />
         </FormGroup>
         <FormGroup>
@@ -73,6 +74,7 @@ class NewUserForm extends React.Component {
             name="name"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.name)}
+            autoComplete={this.defaultIfEmpty(this.state.name)}
           />
         </FormGroup>
 
@@ -83,6 +85,7 @@ class NewUserForm extends React.Component {
             name="organization"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.organization)}
+            autoComplete={this.defaultIfEmpty(this.state.organization)}
           />
         </FormGroup>
         <FormGroup>
@@ -92,8 +95,7 @@ class NewUserForm extends React.Component {
             name="bio"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.bio)}
-            autoComplete={this.props.user.bio}
-
+            autoComplete= {this.defaultIfEmpty(this.state.organization)}
           />
         </FormGroup>
         {!this.props.create ? 
@@ -104,7 +106,7 @@ class NewUserForm extends React.Component {
             name="password"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.password)}
-            autoComplete={this.props.user.password}
+            autoComplete={this.defaultIfEmpty(this.state.password)}
           />
         </FormGroup>
         :

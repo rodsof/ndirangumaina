@@ -1,17 +1,20 @@
 import React, { Fragment } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import NewUserModal from "./NewUserModal";
-import { Link, useHistory } from 'react-router-dom';
 import axios from "axios";
 import { API_URL_LOGIN, API_URL_PROFILES } from "../constants";
 
 class Login extends React.Component {
 
   state = {
-    email: "",
-    password: "",
+    username: "",
+    password: ""
   };
-
+componentDidMount(){
+  if (localStorage.getItem("token")){
+    this.props.history.push("/home");
+  }
+}
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -24,6 +27,7 @@ class Login extends React.Component {
     e.preventDefault();
     axios.post(API_URL_LOGIN, this.state ).then(res =>  {
         localStorage.setItem('token', res.data.token);
+        localStorage.setItem('email',this.state.username);
         this.props.history.push("/home");
       });
   };
@@ -31,7 +35,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div class="limiter">
+      <div className="limiter">
         <div className="container-login100">
           <div className="wrap-login100">
             <Form onSubmit={this.login} enctype="multipart/form-data">
@@ -41,7 +45,7 @@ class Login extends React.Component {
                   type="text"
                   name="username"
                   onChange={this.onChange}
-                  value={this.defaultIfEmpty(this.state.name)}
+                  value={this.defaultIfEmpty(this.state.username)}
                 />
               </FormGroup>
               <FormGroup>
@@ -50,7 +54,7 @@ class Login extends React.Component {
                   type="password"
                   name="password"
                   onChange={this.onChange}
-                  value={this.defaultIfEmpty(this.state.name)}
+                  value={this.defaultIfEmpty(this.state.password)}
                 />
               </FormGroup>
               <Button color="danger">LOGIN</Button>

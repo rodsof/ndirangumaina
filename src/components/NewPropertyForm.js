@@ -1,14 +1,11 @@
 import React from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
-import axios from "axios";
+import clientAxios from '../config/axios'
 
-import { API_URL_DATA } from "../constants";
 
 class NewPropertyForm extends React.Component {
   state = {
-    id: 0,
-    user_profile: this.props.user.id,
     title: "",
     image: "",
     video: ""
@@ -16,7 +13,7 @@ class NewPropertyForm extends React.Component {
 
   componentDidMount() {
     if (this.props.property) {
-      const { id, title, image, video } = this.props.property;
+      const { id, title, image, video } = this.props.result;
       this.setState({ id, title, image, video });
     }
   }
@@ -27,12 +24,22 @@ class NewPropertyForm extends React.Component {
 
   createProperty = e => {
     e.preventDefault();
-    axios.post(API_URL_DATA, this.state).then(() => {
-      this.props.resetState();
+    var form = new FormData(document.forms.namedItem("realEstate"));
+    form.append("user_profile",this.props.user.id);
+    clientAxios.post('SpatialArdhi/data/',form ).then(() => {
       this.props.toggle();
+      this.props.resetState();
     });
   };
 
+  editProperty = e => {
+    e.preventDefault();
+    var form = new FormData(document.forms.namedItem("realEstate"));
+    clientAxios.put('SpatialArdhi/data/'+this.props.result.id+'/', form ).then(() => {
+      this.props.toggle();
+      this.props.resetState();
+    });
+  };
 
   defaultIfEmpty = value => {
     return value === "" ? "" : value;
@@ -40,7 +47,7 @@ class NewPropertyForm extends React.Component {
 
   render() {
     return (
-      <Form onSubmit={this.createProperty}>
+      <Form name="realEstate" onSubmit={this.props.result ? this.editProperty : this.createProperty} encType="multipart/form-data">
         <FormGroup>
           <Label for="title">Title:</Label>
           <Input
@@ -56,7 +63,6 @@ class NewPropertyForm extends React.Component {
             type="file"
             name="image"
             onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.image)}
           />
         </FormGroup>
         <FormGroup>
@@ -65,7 +71,6 @@ class NewPropertyForm extends React.Component {
             type="file"
             name="video"
             onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.image)}
           />
         </FormGroup>
         <Button

@@ -2,8 +2,8 @@
 import axios from 'axios';
 
 const clientAxios = axios.create({
-    baseURL : process.env.API,
-    headers: { Authorization: `Token a300f14adcc916a7334b63128fc00f15df442879` },
+    baseURL : 'http://localhost:8000',
+    headers: { Authorization: `Token ${localStorage.getItem("token")} ` },
     'Content-Type': 'application/json'
 });
 

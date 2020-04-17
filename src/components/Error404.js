@@ -5,19 +5,19 @@ const Error404 = () => {
     return (
         <div>
         <div id="lost">
-        <section class="error-page-background">
-           <div class="container">
-             <div class="row">        
-              <div class="col-md-12">
+        <section className="error-page-background">
+           <div className="container">
+             <div className="row">        
+              <div className="col-md-12">
 
-                      <div class="text-center">
-                      <a href="" data-toggle="modal" data-target="#reason" title="Why You Are Seeing 404 Page"><i class="icon-question bounce"></i></a>
+                      <div className="text-center">
+                      <a href="" data-toggle="modal" data-target="#reason" title="Why You Are Seeing 404 Page"><i className="icon-question bounce"></i></a>
                             </div>
                                 
                                 <h2>404</h2>
                                 <p>The Page You Are Looking For Doesn't Exist.</p>
                                  
-                                 <div class="text-center">
+                                 <div className="text-center">
                                  <Link to={'/home'} className="button button-style">Back To Home </Link>
                                 </div>
                                      
@@ -28,22 +28,22 @@ const Error404 = () => {
             
            </div>
   
-           <div class="modal fade reason-popup-box padding-top-120" id="reason" role="dialog">
-             <div class="modal-dialog">
+           <div className="modal fade reason-popup-box padding-top-120" id="reason" role="dialog">
+             <div className="modal-dialog">
         
           
-             <div class="modal-content">
-                <div class="modal-body">
-                   <div class="row">
-                      <div class="col-sm-12">
+             <div className="modal-content">
+                <div className="modal-body">
+                   <div className="row">
+                      <div className="col-sm-12">
                        
-                       <div class="box-padding">
-                         <button type="button" class="btn pull-right" data-dismiss="modal"><i class="icon-close"></i></button>
+                       <div className="box-padding">
+                         <button type="button" className="btn pull-right" data-dismiss="modal"><i className="icon-close"></i></button>
                           <h3>Why You Are Seeing 404 Page ?</h3>
                            
-                           <div class="margin-top-20">
+                           <div className="margin-top-20">
                              
-                              <ul class="list-icon size-sm">
+                              <ul className="list-icon size-sm">
                                 <li>May be, The page is removed.</li>
                                 <li>May be, The page name have changed.</li>
                                 <li>May be, You did typed wrong keyword.</li>

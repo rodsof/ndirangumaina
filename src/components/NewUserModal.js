@@ -44,6 +44,7 @@ class NewUserModal extends Component {
               toggle={this.toggle}
               user={this.props.user}
               create={create}
+              resetState={this.props.resetState}
             />
           </ModalBody>
         </Modal>

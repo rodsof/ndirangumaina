@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Modal, ModalHeader, Button, ModalFooter } from "reactstrap";
 
-import axios from "axios";
+import clientAxios from "../config/axios";
 
 import { API_URL_DATA } from "../constants";
 
@@ -16,8 +16,8 @@ class ConfirmRemovalModal extends Component {
     }));
   };
 
-  delete = pk => {
-    axios.delete(API_URL_DATA + pk).then(() => {
+  delete = id => {
+    clientAxios.delete('/SpatialArdhi/data/' + id + '/').then(() => {
       this.props.resetState();
       this.toggle();
     });
@@ -41,7 +41,7 @@ class ConfirmRemovalModal extends Component {
             <Button
               type="button"
               color="danger"
-              onClick={() => this.delete(this.props.pk)}
+              onClick={() => this.delete(this.props.result.id)}
             >
               Yes
             </Button>
