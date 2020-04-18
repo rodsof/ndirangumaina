@@ -11,13 +11,13 @@ class Header extends Component {
         </a>
         <nav className="header-nav">
           <ul className="main-menu">
-            <li><a href="/home" className="active">Home</a></li>
+            <li><a href="/home" className={ this.props.active === "home" ?  "active" : "" }>Home</a></li>
             <NewPropertyModal 
             create={true}
             user={this.props.user}
             resetState={this.props.resetState}
           />
-         <li><a href="/virtual" >Virtual Tour</a></li>
+         <li><a href="/virtual" className={ this.props.active === "virtualtour" ?  "active" : "" }>Virtual Tour</a></li>
           </ul>
           <div className="header-right">
             <div className="user-panel">

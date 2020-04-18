@@ -20,8 +20,25 @@ class App extends Component {
     super(props);
     this.state = {
       logged_in: localStorage.getItem("token") ? true : false,
-      user: "",
-      results: []
+      user: {
+        name:"sofi",
+        id:"1",
+        bio:"student",
+        organization:"Unlpam",
+        email:"rodriguezsofiaf@gmail.com"
+      },
+      results: [
+        { title: "home1",
+          image: "https://www.marzipano.net/media/jeronimos/preview.jpg",
+          video: "",
+          id:1
+        },
+        { title: "home2",
+        image: "https://www.marzipano.net/media/electricity-museum/preview.jpg",
+        video: "",
+        id:2
+      }
+      ]
     };
   }
 
@@ -32,7 +49,7 @@ class App extends Component {
           this.setState({ user: res.data[0], logged_in: true });
         });
     }
-    this.getResults();
+    //this.getResults();
   }
 
   getResults = () => {
@@ -41,7 +58,6 @@ class App extends Component {
 	
   resetState = () => {
     this.componentDidMount();
-    this.getResults();
 	  };
   render() {
     return (

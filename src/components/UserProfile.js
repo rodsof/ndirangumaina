@@ -7,7 +7,10 @@ const UserProfile = ({ user, resetState }) => {
 
   return (
     <div>
-      <Header user={user} />
+      <Header 
+      user={user} 
+      active='profile'
+      />
       <Row>
         <div className="user-section">
           <div className="user-warp">

@@ -11,7 +11,7 @@ class Login extends React.Component {
     password: ""
   };
 componentDidMount(){
-  if (localStorage.getItem("token")){
+  if (!localStorage.getItem("token")){ // OJO
     this.props.history.push("/home");
   }
 }
@@ -38,7 +38,7 @@ componentDidMount(){
       <div className="limiter">
         <div className="container-login100">
           <div className="wrap-login100">
-            <Form onSubmit={this.login} enctype="multipart/form-data">
+            <Form onSubmit={this.login} encType="multipart/form-data">
               <FormGroup>
                 <Label for="username">Email:</Label>
                 <Input

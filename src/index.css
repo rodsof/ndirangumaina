@@ -59,6 +59,7 @@ p {
 	line-height: 2;
 }
 
+
 img {
 	max-width: 100%;
 }
@@ -247,9 +248,10 @@ Header section
 }
 
 .site-logo {
-float: left;
+	float: left;
   display: inline-block;
   height: 50px;
+  margin-top: 2rem;
   width: 150px;
   padding: 0;
 }
@@ -1581,14 +1583,14 @@ Responsive
   #titleBar .sceneName {
 	width: 100%;
 	height: 100%;
-	line-height: 30px;
-	padding: 5px;
+	line-height: 25px;
 	background-color: #dc3545;
-	background-color: rgba(84, 58, 58, 0.8);
+	background-color: rgba(226, 33, 33, 0.8);
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	color: white;
+	margin-top: 6.2rem;
 	-moz-user-select: text;
 	-webkit-user-select: text;
 	-ms-user-select: text;
@@ -1608,7 +1610,8 @@ Responsive
 	height: 40px;
 	padding: 5px;
 	background-color: #dc3545;
-	background-color: rgba(223, 51, 51, 0.8);
+	background-color: rgba(226, 33, 33, 0.8);
+	margin-top: 6.2rem;
   }
   
   .mobile #fullscreenToggle {
@@ -1658,7 +1661,8 @@ Responsive
 	height: 40px;
 	padding: 5px;
 	background-color: #dc3545;
-	background-color: rgba(231, 51, 19, 0.8);
+	background-color: rgba(226, 33, 33, 0.8);
+	margin-top: 6.2rem;
   }
   
   .mobile #autorotateToggle {
@@ -1712,7 +1716,8 @@ Responsive
 	height: 40px;
 	padding: 5px;
 	background-color: #dc3545;
-	background-color: rgba(182, 41, 22, 0.8);
+	background-color: rgba(226, 33, 33, 0.8);
+	margin-top: 8.9rem;
   }
   
   .mobile #sceneListToggle {
@@ -1769,6 +1774,7 @@ Responsive
 	margin-left: 0;
 	-webkit-transition: margin-left 0.5s ease-in-out;
 	transition: margin-left 0.5s ease-in-out;
+	margin-top: 8.9rem;
   }
   
   .mobile #sceneList {
@@ -1778,7 +1784,7 @@ Responsive
   #sceneList .scenes {
 	width: 100%;
 	background-color: #dc3545;
-	background-color: rgba(225, 21, 21, 0.8);
+	background-color: rgba(226, 33, 33, 0.8);
   }
   
   .mobile #sceneList {

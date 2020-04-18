@@ -6,7 +6,7 @@ import Search from './Search';
 
 class Home extends Component {
   componentDidMount(){
-    if (!localStorage.getItem("token")){
+    if (localStorage.getItem("token")){ // OJO VA !
       this.props.history.push("/");
     }
   }
@@ -15,6 +15,7 @@ class Home extends Component {
       <Container>
         <Header
           user={ this.props.user}
+          active = { 'home'}
         />
         <Row>
           <Col>

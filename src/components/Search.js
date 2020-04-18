@@ -27,7 +27,7 @@ class Search extends Component {
         <section className="hero-section set-bg">
 		<div className="container">
 			<div className="hero-warp">
-				<form className="main-search-form" onSubmit={this.search} enctype="multipart/form-data">
+				<form className="main-search-form" onSubmit={this.search} encType="multipart/form-data">
                 <div className="search-type">
 						<div className="st-item">
 							<input type="radio" name="st" id="states" checked/>
