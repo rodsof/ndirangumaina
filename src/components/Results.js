@@ -10,7 +10,7 @@ const Results = ({ results, user,resetState }) => {
         </div>
         {results.length === 0 ? (
           <li className="col-lg-4">
-            <p>No results</p>
+            <h3>No results</h3>
           </li>
         ) : (
           <TransitionGroup>

@@ -6,7 +6,7 @@ import Search from './Search';
 
 class Home extends Component {
   componentDidMount(){
-    if (localStorage.getItem("token")){ // OJO VA !
+    if (!localStorage.getItem("token")){ 
       this.props.history.push("/");
     }
   }

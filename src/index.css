@@ -137,7 +137,7 @@ Commom elements
 	padding: 21px 44px;
 	min-width: 156px;
 	font-size: 16px;
-	background: #ff000a;
+	background: #dc3545;
 	color: #fff;
 	line-height: normal;
 	cursor: pointer;
@@ -280,7 +280,7 @@ Header section
 
 .main-menu li a:hover,
 .main-menu li a.active {
-	border-bottom: 2px solid #ff000a;
+	border-bottom: 2px solid #dc3545;
 }
 
 .main-menu li:hover>.sub-menu {
@@ -340,11 +340,11 @@ Header section
 }
 
 .main-menu .sub-menu li a:hover {
-	color: #ff000a;
+	color: #dc3545;
 }
 
 .header-right {
-	display: inline-block;
+	display: block;
 }
 
 .header-right a {
@@ -352,6 +352,7 @@ Header section
 	font-size: 16px;
 	font-family: "Lato", sans-serif;
 	display: inline-block;
+	margin-top:1rem;
 }
 
 .header-right .register {
@@ -405,7 +406,7 @@ Hero section
 
 .search-type .st-item input:checked+label {
 	padding: 11px 30px;
-	background: #ff000a;
+	background: #dc3545;
 }
 
 .search-type .st-item input:checked+label:after {
@@ -492,13 +493,13 @@ Intro section
 	display: inline-block;
 	font-size: 18px;
 	font-weight: 700;
-	color: #ff000a;
-	border-bottom: 1px solid #ff000a;
+	color: #dc3545;
+	border-bottom: 1px solid #dc3545;
 	line-height: 1;
 }
 
 .readmore-btn:hover {
-	color: #ff000a;
+	color: #dc3545;
 }
 
 /* ----------------
@@ -540,7 +541,7 @@ Hero section
 }
 
 .property-item .pi-badge.new {
-	background: #ff000a;
+	background: #dc3545;
 }
 
 .property-item .pi-badge.offer {
@@ -685,7 +686,7 @@ About page
 	height: 71px;
 	margin-bottom: 33px;
 	border-radius: 50%;
-	background: #ff000a;
+	background: #dc3545;
 	display: -webkit-inline-box;
 	display: -ms-inline-flexbox;
 	display: inline-flex;
@@ -797,7 +798,7 @@ Blog page
 
 .site-pagination a.active {
 	color: #fff;
-	background: #ff000a;
+	background: #dc3545;
 	padding: 4px 5px;
 }
 
@@ -845,7 +846,7 @@ Blog page
 }
 
 .search-results .filter-btn li.active {
-	color: #ff000a;
+	color: #dc3545;
 }
 
 .search-results .load-more {
@@ -907,7 +908,7 @@ Single Property Page
 }
 
 .single-property .sp-badge.new {
-	background: #ff000a;
+	background: #dc3545;
 }
 
 .single-property .sp-badge.offer {
@@ -1035,7 +1036,7 @@ Single Property Page
 	top: calc(50% - 28px);
 	border-radius: 24px;
 	font-size: 17px;
-	color: #ff000a;
+	color: #dc3545;
 	background: #fff;
 }
 
@@ -1299,7 +1300,7 @@ Responsive
 
 /* Large Mobile :480px. */
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 800px) {
 	.header-section {
 		padding: 0 15px;
 	}
@@ -1307,61 +1308,8 @@ Responsive
 		padding: 0 0;
 	}
 	.header-nav {
-		display: none;
-	}
-	.slicknav_menu {
-		padding: 0;
 		display: block;
-		background: transparent;
-	}
-	.slicknav_menu .header-right-warp {
-		padding: 10px 0;
-		padding-right: 10px;
-		border-bottom: 1px solid #111;
-		text-align: right;
-	}
-	.slicknav_menu .header-right .login {
-		border-bottom: none;
-	}
-	.slicknav_menu .header-right .register {
-		margin-left: 0;
-	}
-	.slicknav_menu .header-right a:hover {
-		background: transparent;
-		color: #fff;
-	}
-	.slicknav_btn {
-		background: #616161;
-		margin-top: 29px;
-	}
-	.slicknav_nav {
-		background: #22242b;
-		margin-bottom: 30px;
-	}
-	.slicknav_nav a {
-		margin: 0;
-		padding: 10px 20px;
-		border-bottom: 1px solid #111;
-	}
-	.slicknav_nav a:hover {
-		color: #ff000a;
-		border-radius: 0;
-		background: #0b0e25;
-	}
-	.slicknav_nav .slicknav_row {
-		padding: 10px 20px;
-		margin: 0;
-	}
-	.slicknav_row a {
-		border-bottom: none;
-	}
-	.slicknav_nav .slicknav_row:hover {
-		border-radius: 0;
-		background: #0b0e25;
-	}
-	.slicknav_parent.slicknav_open {
-		background: #0b0e25;
-		color: #ff000a;
+		width: 100%;
 	}
 	.hero-section {
 		height: auto;
@@ -1535,7 +1483,7 @@ Responsive
   }
  
 
-  /*ojo ojo ojo*/
+
   #sceneContainer {
 	  width: 100px;
   }
@@ -1583,7 +1531,7 @@ Responsive
   #titleBar .sceneName {
 	width: 100%;
 	height: 100%;
-	line-height: 25px;
+	line-height: 15px;
 	background-color: #dc3545;
 	background-color: rgba(226, 33, 33, 0.8);
 	overflow: hidden;

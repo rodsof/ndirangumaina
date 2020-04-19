@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NewPropertyModal from "./NewPropertyModal";
-import {Button} from 'reactstrap';
+
 
 class Header extends Component {
     render() {
@@ -11,19 +11,24 @@ class Header extends Component {
         </a>
         <nav className="header-nav">
           <ul className="main-menu">
-            <li><a href="/home" className={ this.props.active === "home" ?  "active" : "" }>Home</a></li>
+            <li>
+              <a href="/home" className={ this.props.active === "home" ?  "active" : "" }>Home</a></li>
+              <li> <a href="/virtual" className={ this.props.active === "virtualtour" ?  "active" : "" }>Virtual Tour</a></li>
+              <li>
+         <div className="header-right">
+            <div className="user-panel">
+              <a href="/profile" className="register">{this.props.user.name}</a>
+            </div>
+          </div>
+          </li>
+          <li>
             <NewPropertyModal 
             create={true}
             user={this.props.user}
             resetState={this.props.resetState}
           />
-         <li><a href="/virtual" className={ this.props.active === "virtualtour" ?  "active" : "" }>Virtual Tour</a></li>
+          </li>
           </ul>
-          <div className="header-right">
-            <div className="user-panel">
-              <a href="/profile" className="register">{this.props.user.name}</a>
-            </div>
-          </div>
         </nav>
       </header>
       );

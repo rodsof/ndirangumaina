@@ -11,7 +11,7 @@ class Login extends React.Component {
     password: ""
   };
 componentDidMount(){
-  if (!localStorage.getItem("token")){ // OJO
+  if (localStorage.getItem("token")){
     this.props.history.push("/home");
   }
 }
