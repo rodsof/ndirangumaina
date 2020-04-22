@@ -7,13 +7,7 @@ import axios from "axios";
 import UserProfile from "./components/UserProfile";
 import Error404 from "./components/Error404";
 import VRScene from "./components/VRScene";
-import { API_URL_PROFILES } from "./constants";
 
-// check tokenAuthorization
-// const token = localStorage.getItem("token");
-// if (token) {
-//   tokenAuth(token);
-// }
 
 class App extends Component {
   constructor(props) {
@@ -26,31 +20,46 @@ class App extends Component {
   }
 
   componentDidMount() {
+        this.getResults();
     if (this.state.logged_in) {
       clientAxios.get( `SpatialArdhi/profiles?search=${localStorage.getItem("email")}`)
         .then((res) => {
           this.setState({ user: res.data[0], logged_in: true });
         });
     }
-    this.getResults();
   }
 
-  getResults = () => {
-		clientAxios.get('/SpatialArdhi/data').then(res => this.setState({ results: res.data }));
+  logout = async() => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    this.setState({ user: {}, logged_in: false});
+    this.props.history.push("/");
+  }
+
+ getResults = async() => {
+	  await	clientAxios.get('/SpatialArdhi/data').then(res => this.setState({ results: res.data }));
 	  };
 	
   resetState = () => {
     this.componentDidMount();
-	  };
+    };
+    
+  search = async(title) => {
+    if(title !== " " && title !== undefined){
+      await clientAxios.get('SpatialArdhi/data', { params: { search: title }} ).then(res =>  {
+        this.setState({ results : res.data } );
+      });
+  }
+  }
   render() {
     return (
       <Router>
         <Switch>
         <Route exact  path='/' component={Login} />} />
-          <Route exact  path='/profile' render={(props) => <UserProfile {...props} user={this.state.user} resetState={this.resetState} />} />
-          <Route exact path='/home' render={(props) => <Home {...props} user={this.state.user} results={this.state.results} resetState={this.resetState} />} />
+          <Route exact  path='/profile' render={(props) => <UserProfile {...props} user={this.state.user} resetState={this.resetState} logout={this.logout}/>} />
+          <Route exact path='/home' render={(props) => <Home {...props} user={this.state.user} results={this.state.results} resetState={this.resetState} search={this.search} logout={this.logout}/>} />
           <Route path="/404" component={Error404} />
-          <Route path="/virtual" render={(props) => <VRScene {...props} user={this.state.user} results={this.state.results}/>}  />
+          <Route path="/virtual" render={(props) => <VRScene {...props} user={this.state.user} results={this.state.results} logout={ this.logout }/>}  />
           <Route component={Error404} />
         </Switch>
       </Router>

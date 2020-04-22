@@ -98,7 +98,6 @@ class NewUserForm extends React.Component {
             autoComplete= {this.defaultIfEmpty(this.state.organization)}
           />
         </FormGroup>
-        {!this.props.create ? 
         <FormGroup>
           <Label for="password">Password:</Label>
           <Input
@@ -106,12 +105,10 @@ class NewUserForm extends React.Component {
             name="password"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.password)}
-            autoComplete={this.defaultIfEmpty(this.state.password)}
+            autoComplete= {this.defaultIfEmpty(this.props.password)}
           />
         </FormGroup>
-        :
-        null
-      }
+  
         {this.props.create ? 
         <Button
           type="submit" 

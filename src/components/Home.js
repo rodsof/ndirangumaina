@@ -16,10 +16,11 @@ class Home extends Component {
         <Header
           user={ this.props.user}
           active = { 'home'}
+          logout={ this.props.logout }
         />
         <Row>
           <Col>
-          <Search user={this.props.user} resetState={this.props.resetState} results={this.props.results} />
+          <Search user={this.props.user} resetState={this.props.resetState} results={this.props.results} search={this.props.search} />
           </Col>
         </Row>
       </Container>

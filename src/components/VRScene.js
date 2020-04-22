@@ -1,15 +1,14 @@
 import React from "react";
 import Header from "./Header";
 class VRScene extends React.Component {
-  componentDidMount() {
+  componentDidUpdate() {
     const script = document.createElement("script");
-
     script.src = "/index.js";
+    console.log(this.props.results);
     window.results = this.props.results;
     script.async = true;
     document.body.appendChild(script);
   }
-
   render() {
     return (
       <div>
