@@ -1,5 +1,5 @@
-export const API_URL_DATA = "http://localhost:8000/SpatialArdhi/data/";
-export const API_URL_LOGIN = "http://localhost:8000/SpatialArdhi/login/";
-export const API_URL_PROFILES = "http://localhost:8000/SpatialArdhi/profiles/";
-export const API_URL_ADMIN = "http://localhost:8000/admin";
-export const API = "http://localhost:8000/SpatialArdhi/"
+export const API_URL_DATA = "https://www.spatialardhi.com/estate/data/";
+export const API_URL_LOGIN = "https://www.spatialardhi.com/estate/login/";
+export const API_URL_PROFILES = "https://www.spatialardhi.com/estate/profiles/";
+export const API_URL_ADMIN = "https://www.spatialardhi.com/estate/admin";
+export const API = "https://www.spatialardhi.com/estate/"

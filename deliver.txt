@@ -1,0 +1,6 @@
+Here's the source code so far.  Have a good sunday! 
+Steps to run it:
+npx create-react-app ndirangumaina (it creates a folder, put the .zip there and unzip)
+cd ndirangumaina
+cd Ndirangumaina (it will be my created folder)
+npm start
