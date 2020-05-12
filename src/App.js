@@ -22,7 +22,7 @@ class App extends Component {
   componentDidMount() {
         this.getResults();
     if (this.state.logged_in) {
-      clientAxios.get( `SpatialArdhi/profiles?search=${localStorage.getItem("email")}`)
+      clientAxios.get( `profiles/?format=json&search=${localStorage.getItem("email")}`)
         .then((res) => {
           this.setState({ user: res.data[0], logged_in: true });
         });
@@ -37,7 +37,7 @@ class App extends Component {
   }
 
  getResults = async() => {
-	  await	clientAxios.get('/SpatialArdhi/data').then(res => this.setState({ results: res.data }));
+	  await	clientAxios.get('data/?format=json').then(res => this.setState({ results: res.data }));
 	  };
 	
   resetState = () => {
@@ -46,7 +46,7 @@ class App extends Component {
     
   search = async(title) => {
     if(title !== " " && title !== undefined){
-      await clientAxios.get('SpatialArdhi/data', { params: { search: title }} ).then(res =>  {
+      await clientAxios.get('data/?format=json', { params: { search: title }} ).then(res =>  {
         this.setState({ results : res.data } );
       });
   }
