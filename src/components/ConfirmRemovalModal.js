@@ -17,7 +17,7 @@ class ConfirmRemovalModal extends Component {
   };
 
   delete = id => {
-    clientAxios.delete('/SpatialArdhi/data/' + id + '/').then(() => {
+    clientAxios.delete('data/?format=json' + id + '/').then(() => {
       this.props.resetState();
       this.toggle();
     });

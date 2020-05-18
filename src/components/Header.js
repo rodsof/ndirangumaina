@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Button} from "reactstrap";
 import NewPropertyModal from "./NewPropertyModal";
-
+import { Link } from 'react-router-dom';
 class Header extends Component {
   render() {
     return (
@@ -29,13 +29,24 @@ class Header extends Component {
               </a>
             </li>
             <li>
-              <div className="header-right">
+              {" "}
+              <a
+                href="/users"
+                className={this.props.active === "users" ? "active" : ""}
+              >
+                Users
+              </a>
+            </li>
+            <li>
                 <div className="user-panel">
                   <a href="/profile" className="register">
                     {this.props.user.name}
                   </a>
                 </div>
-              </div>
+            </li>
+            <li
+          onClick={ () => this.props.logout() } >
+<Link to="/">Log Out </Link>
             </li>
             <li>
               <NewPropertyModal
@@ -44,12 +55,7 @@ class Header extends Component {
                 resetState={this.props.resetState}
               />
             </li>
-            <li>
-            <Button
-
-          onClick={ () => this.props.logout() }
-        >LOG OUT</Button>
-            </li>
+           
           </ul>
         </nav>
       </header>

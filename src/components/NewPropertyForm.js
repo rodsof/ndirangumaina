@@ -26,7 +26,7 @@ class NewPropertyForm extends React.Component {
     e.preventDefault();
     var form = new FormData(document.forms.namedItem("realEstate"));
     form.append("user_profile",this.props.user.id);
-    clientAxios.post('SpatialArdhi/data/',form ).then(() => {
+    clientAxios.post('data/',form ).then(() => {
       this.props.toggle();
       this.props.resetState();
     });
@@ -35,7 +35,7 @@ class NewPropertyForm extends React.Component {
   editProperty = e => {
     e.preventDefault();
     var form = new FormData(document.forms.namedItem("realEstate"));
-    clientAxios.put('SpatialArdhi/data/'+this.props.result.id+'/', form ).then(() => {
+    clientAxios.put('data/'+this.props.result.id+'/', form ).then(() => {
       this.props.toggle();
       this.props.resetState();
     });

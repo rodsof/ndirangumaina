@@ -15,7 +15,8 @@ class VRScene extends React.Component {
           <Header 
           user={this.props.user}
           active = 'virtualtour'
-          />
+         logout={this.props.logout}
+ />
         <div id="pano"></div>
 
         <div id="sceneList">

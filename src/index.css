@@ -247,10 +247,10 @@ Header section
 }
 
 .site-logo {
-	float: left;
+   float: left;
   display: inline-block;
   height: 50px;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   width: 150px;
   padding: 0;
 }

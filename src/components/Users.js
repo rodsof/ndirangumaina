@@ -4,7 +4,7 @@ import Header from "./Header";
 import Search from './Search';
 
 
-class Home extends Component {
+class Users extends Component {
   componentDidMount(){
     if (!localStorage.getItem("token")){ 
       this.props.history.push("/");
@@ -15,12 +15,12 @@ class Home extends Component {
       <Container>
         <Header
           user={ this.props.user}
-          active = { 'home'}
+          active = { 'users'}
           logout={ this.props.logout }
         />
         <Row>
           <Col>
-          <Search active={"realEstate"} user={this.props.user} resetState={this.props.resetState} results={this.props.results} search={this.props.search} />
+          <Search user={this.props.user} active={"users"} resetState={this.props.resetState} results={this.props.results} search={this.props.search} />
           </Col>
         </Row>
       </Container>
@@ -28,7 +28,7 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Users;
 /*
 
         */

@@ -3,14 +3,15 @@ import { Col, Container, Row } from "reactstrap";
 import Header from "./Header";
 import NewUserModal from "./NewUserModal";
 
-const UserProfile = ({ user, resetState }) => {
+const UserProfile = ({ user, resetState, logout }) => {
 
   return (
     <div>
       <Header 
       user={user} 
       active='profile'
-      />
+     logout={logout} 
+/>
       <Row>
         <div className="user-section">
           <div className="user-warp">

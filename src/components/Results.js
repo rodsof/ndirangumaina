@@ -1,7 +1,8 @@
 import React from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Result from "./Result";
-const Results = ({ results, user,resetState }) => {
+const Results = ({results, user,resetState, active}) => {
+ 
   return (
     <section className="property-section">
       <div className="container">
@@ -21,6 +22,7 @@ const Results = ({ results, user,resetState }) => {
                 result={result} 
                 user={user}
                 resetState={resetState}
+                active={active}
                 />
               ))}
             </div>

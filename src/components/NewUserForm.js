@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
 
 import axios from "axios";
 
@@ -12,7 +12,8 @@ class NewUserForm extends React.Component {
     email: "",
     organization:"",
     bio:"",
-    password: ""
+    password: "",
+    error: null
   };
 
   componentDidMount() {
@@ -31,15 +32,19 @@ class NewUserForm extends React.Component {
     var form = new FormData(document.forms.namedItem("user"));
     clientAxios.post(API_URL_PROFILES, form).then(() => {
       this.props.toggle();
-    });
+    }).catch(error => this.setState({
+      error: "Signin Error! "
+    }) );
   };
 
   editUser = e => {
     e.preventDefault();
-    clientAxios.put('SpatialArdhi/profiles/'+this.props.user.id+'/',this.state ).then(() => {
+    clientAxios.put('profiles/'+this.props.user.id+'/',this.state ).then(() => {
       this.props.toggle();
       this.props.resetState();
-    });
+    }).catch(error => this.setState({
+      error: "Error! "
+    }));
   };
   
   defaultIfEmpty = value => {
@@ -49,15 +54,7 @@ class NewUserForm extends React.Component {
   render() {
     return (
       <Form name="user" onSubmit={this.props.user ? this.editUser : this.createUser} encType="multipart/form-data">
-        <FormGroup>
-          <Label for="image">Profile photo:</Label>
-          <Input
-            type="file"
-            name="image"
-            onChange={this.onChange}
-          />
-        </FormGroup>
-        <FormGroup>
+         <FormGroup>
           <Label for="email">Email:</Label>
           <Input
             type="email"
@@ -98,7 +95,15 @@ class NewUserForm extends React.Component {
             autoComplete= {this.defaultIfEmpty(this.state.organization)}
           />
         </FormGroup>
-        <FormGroup>
+       	<FormGroup>
+          <Label for="avatar">Avatar</Label>
+          <Input
+            type="file"
+            name="avatar"
+            onChange={this.onChange}
+          />
+        </FormGroup>
+	 <FormGroup>
           <Label for="password">Password:</Label>
           <Input
             type="password"
@@ -108,7 +113,10 @@ class NewUserForm extends React.Component {
             autoComplete= {this.defaultIfEmpty(this.props.password)}
           />
         </FormGroup>
-  
+        { this.state.error ? 
+             <Alert  color="danger"> {this.state.error} </Alert>  :
+             null
+            }
         {this.props.create ? 
         <Button
           type="submit" 

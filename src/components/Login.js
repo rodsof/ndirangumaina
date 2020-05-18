@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
 import NewUserModal from "./NewUserModal";
 import axios from "axios";
 import { API_URL_LOGIN, API_URL_PROFILES } from "../constants";
@@ -8,7 +8,8 @@ class Login extends React.Component {
 
   state = {
     username: "",
-    password: ""
+    password: "",
+    error: null
   };
 componentDidMount(){
   if (localStorage.getItem("token")){
@@ -29,7 +30,9 @@ componentDidMount(){
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('email',this.state.username);
         this.props.history.push("/home");
-      });
+      }).catch(error => this.setState({
+        error: "Login error"
+      }));
   };
 
 
@@ -57,6 +60,10 @@ componentDidMount(){
                   value={this.defaultIfEmpty(this.state.password)}
                 />
               </FormGroup>
+              { this.state.error ? 
+             <Alert  color="danger"> {this.state.error} </Alert>  :
+             null
+            }
               <Button color="danger">LOGIN</Button>
               <NewUserModal 
               create={true} 
