@@ -17,7 +17,7 @@ class ConfirmRemovalModal extends Component {
   };
 
   delete = id => {
-    clientAxios.delete('data/?format=json' + id + '/').then(() => {
+    clientAxios.delete('data/' + id + '/?format=json').then(() => {
       this.props.resetState();
       this.toggle();
     });

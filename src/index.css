@@ -1533,7 +1533,6 @@ Responsive
 	line-height: 30px;
 	background-color: #dc3545;
 	background-color: rgba(226, 33, 33, 0.8);
-	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	color: white;

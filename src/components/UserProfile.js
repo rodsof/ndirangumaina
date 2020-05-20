@@ -16,7 +16,7 @@ const UserProfile = ({ user, resetState, logout }) => {
         <div className="user-section">
           <div className="user-warp">
             <div className="user-image">
-              <img src="/user.png" />
+              <img src={user.avatar} />
             </div>
             <h2>{user.name}</h2>
             <h4>
