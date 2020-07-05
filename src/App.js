@@ -7,6 +7,7 @@ import UserProfile from "./components/UserProfile";
 import Error404 from "./components/Error404";
 import VRScene from "./components/VRScene";
 import Users from "./components/Users";
+import PannellumReact from "./components/PanellumReact";
 // si tengo problemas para npm start es porque en package.json cambie homepage
 class App extends Component {
   constructor(props) {
@@ -60,10 +61,11 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-        <Route exact  path='/' component={Login} />} />
+        <Route exact  path='/' component={Login} />
           <Route exact  path='/profile' render={(props) => <UserProfile {...props} user={this.state.user} resetState={this.resetState} logout={this.logout}/>} />
           <Route exact path='/home' render={(props) => <Home {...props} user={this.state.user} results={this.state.results} resetState={this.resetState} search={this.search} logout={this.logout}/>} />
           <Route path="/404" component={Error404} />
+          <Route path="/virtual-tour" component={PannellumReact} />
           <Route path="/virtual" render={(props) => <VRScene {...props} user={this.state.user} results={this.state.results} logout={ this.logout }/>}  />
           <Route path="/users" render={(props) => <Users {...props} user={this.state.user} results={this.state.users}  search={this.search} logout={ this.logout }/>}  />
           <Route component={Error404} />

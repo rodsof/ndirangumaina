@@ -1,6 +1,7 @@
 import React from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { TransitionGroup } from "react-transition-group";
 import Result from "./Result";
+import { CardColumns } from "reactstrap";
 const Results = ({results, user,resetState, active}) => {
  
   return (
@@ -15,7 +16,7 @@ const Results = ({results, user,resetState, active}) => {
           </li>
         ) : (
           <TransitionGroup>
-            <div className="row mt-5">
+            <CardColumns>
               {results.map((result) => (
                 <Result 
                 key={ result.id }
@@ -25,7 +26,7 @@ const Results = ({results, user,resetState, active}) => {
                 active={active}
                 />
               ))}
-            </div>
+            </CardColumns>
           </TransitionGroup>
         )}
       </div>
