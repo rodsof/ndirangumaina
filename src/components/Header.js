@@ -22,21 +22,22 @@ class Header extends Component {
             <li>
               {" "}
               <a
-                href="/virtual"
-                className={this.props.active === "virtualtour" ? "active" : ""}
-              >
-                Virtual Tour
-              </a>
-            </li>
-            <li>
-              {" "}
-              <a
                 href="/users"
                 className={this.props.active === "users" ? "active" : ""}
               >
                 Users
               </a>
             </li>
+            <li>
+              {" "}
+              <a
+                href="/virtual"
+                className={this.props.active === "virtualtour" ? "active" : ""}
+              >
+                Virtual Tour
+              </a>
+            </li>
+           
             <li>
                 <div className="user-panel">
                   <a href="/profile" className="register">

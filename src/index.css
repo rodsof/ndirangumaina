@@ -2312,3 +2312,7 @@ Responsive
 	background: -moz-linear-gradient(top, #f50f0f, #f8dcdc);
 	background: linear-gradient(top, #f50f0f, #f8dcdc);
   }
+
+  .float-right {
+	  margin-top: .5rem;;
+  }

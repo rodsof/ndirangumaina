@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { TransitionGroup } from "react-transition-group";
 import Result from "./Result";
 import { CardColumns } from "reactstrap";
+import {
+  slice, concat, 
+} from 'lodash';
+
+
 const Results = ({results, user,resetState, active}) => {
- 
+  var LIMIT;
+  if( active === "realEstate") {
+    LIMIT = 3;
+  }
+  else {
+   LIMIT = 9;
+  }
+  const LENGTH = results.length;
+  const [showMore,setShowMore] = useState(true);
+  const [list,setList] = useState(slice(results, 0, LIMIT));
+  const [index,setIndex] = useState(LIMIT);
+
+  useEffect(() => {
+    if(results.length>0)
+      setList(slice(results, 0, LIMIT));
+  },[results]);
+
+
+  const loadMore = () =>{
+    const newIndex = index + LIMIT;
+    const newShowMore = newIndex < (LENGTH - 1);
+    const newList = concat(list, slice(results, index, newIndex));
+    setIndex(newIndex);
+    setList(newList);
+    setShowMore(newShowMore);
+  }
+
   return (
     <section className="property-section">
       <div className="container">
@@ -17,7 +48,7 @@ const Results = ({results, user,resetState, active}) => {
         ) : (
           <TransitionGroup>
             <CardColumns>
-              {results.map((result) => (
+              {list.map((result) => (
                 <Result 
                 key={ result.id }
                 result={result} 
@@ -27,6 +58,8 @@ const Results = ({results, user,resetState, active}) => {
                 />
               ))}
             </CardColumns>
+            {showMore && <button onClick={loadMore} className="site-btn btn-danger"> Load More </button>}
+
           </TransitionGroup>
         )}
       </div>

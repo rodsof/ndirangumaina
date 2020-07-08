@@ -215,7 +215,7 @@
      // urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg",
      // { cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg" });
 
-    var source = Marzipano.ImageUrlSource.fromString("https://cors-anywhere.herokuapp.com/"+data.image,
+    var source = Marzipano.ImageUrlSource.fromString(data.image,
     { cubeMapPreviewUrl: data.image });
     var geometry = new Marzipano.CubeGeometry(data.levels);
     var limiter = Marzipano.RectilinearView.limit.traditional(data.faceSize, 100*Math.PI/180, 120*Math.PI/180);

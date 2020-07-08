@@ -8,7 +8,7 @@ import { Col, Card, CardTitle, CardImg, CardBody } from "reactstrap";
 const Result = ({ result, user, resetState, active }) => {
   if (active === "realEstate") {
     return (
-      <Card >
+      <Card mt="10">
         <CardImg top  src={result.image} alt="real estate image"></CardImg>
         <CardBody>
           <CardTitle><h5>{result.title}</h5></CardTitle>
