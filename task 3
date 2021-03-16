@@ -1,0 +1,23 @@
+Task 3:-
+
+JSON WEB TOKEN (jwt) authentication is done.
+
+1. https://www.spatialardhi.com/api/token/
+use this for login -> generate jwt token
+
+2. https://www.spatialardhi.com/api/token/refresh/
+use this when your token get expired.
+https://www.spatialardhi.com/api/token/?format=json
+
+use this for login -> generate jwt token
+
+https://www.spatialardhi.com/api/token/refresh/?format=json
+use this when your token get expired.JSON WEB TOKEN AUTHENTICATION
+When you do log in, server send 2 tokens (Access token, Refresh token) in response to the client.
+The access token will have less expiry time and Refresh will have long expiry time.
+The client (Front end) will store refresh token in his local storage and access token in cookies.
+The client will use an access token for calling APIs. But when it expires, pick the refresh token from local storage and call auth server API to get the new token.Your auth server will have an API exposed which will accept refresh token and checks for and return a new access token.
+Once the refresh token is expired, the User will be logged out.
+
+de esta m falta todo pero ecnontre una opcion con token provider en codementor
+

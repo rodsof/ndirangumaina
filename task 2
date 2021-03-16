@@ -1,0 +1,19 @@
+Task 2:-
+On https://video.spatialardhi.com
+Implement password reset
+[1]. https://www.spatialardhi.com/estate/password_reset/validate_token/?format=api -> on this url you will verify your generated token which you have received in your mail
+https://www.spatialardhi.com/estate/password_reset/confirm/ -> on this url you will post your new password and also supply token. your password will get changed.https://www.spatialardhi.com/estate/password_reset/?format=api. On this URL user press password reset then this link asks for user email once user gives email tokens are sent to the email."
+
+Servidor
+$ ssh root@45.79.19.195.linode.com
+Host:http://45.79.19.195
+Use this credentials to solve that problem, what am fearing most is server..... Rebuilding is costly. Kindly take care.
+
+username:- root
+password:- root???outliers811
+Host:- http://45.79.19.195
+
+This is the server with :- check the apps inthe server on attached psf
+video.spatialardhi.com
+
+no anda bien la api lpm proba las cosas pelotude

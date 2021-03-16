@@ -1,0 +1,9 @@
+export const API_URL_DATA = "https://www.spatialardhi.com/estate/data/";
+export const API_URL_LOGIN = "https://www.spatialardhi.com/api/token/";
+export const API_URL_PROFILES = "https://www.spatialardhi.com/estate/profiles/";
+export const API_URL_ADMIN = "https://www.spatialardhi.com/estate/admin";
+export const API_URL_RESETP = "https://www.spatialardhi.com/estate/password_reset/?format=api";
+export const API_URL_SENDT = "https://www.spatialardhi.com/estate/password_reset/validate_token/?format=api";
+export const API_URL_CONFIRMP = "https://www.spatialardhi.com/estate/password_reset/confirm/";
+export const API = "https://www.spatialardhi.com/estate/"
+export const API_URL_REFRESH = "https://www.spatialardhi.com/api/token/refresh/"
